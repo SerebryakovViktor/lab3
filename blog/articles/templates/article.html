@@ -1,24 +1,24 @@
+<!-- articles/templates/article.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Архив статей</title>
+    <title>{{ post.title }}</title>
     <link rel="stylesheet" href="/static/css/article.css">
 </head>
-<body class="archive">
+<body class="article">
     <div class="header">
         <img src="https://nnovgorod.sledcom.ru/upload/site49/document_news/unnamed_(1)-800x600.jpg" alt="Логотип">
     </div>
-    <div class="archive">
-        {% for post in posts %}
+    <div class="content">
         <div class="one-post">
-           <h2 class="post-title"><a href="{% url 'get_article' post.id %}">{{ post.title }}</a></h2>
+            <h2 class="post-title">{{ post.title }}</h2>
             <div class="article-info">
                 <div class="article-author">{{ post.author.username }}</div>
                 <div class="article-created-date">{{ post.created_date }}</div>
             </div>
-            <p class="article-text">{{ post.get_excerpt }}</p>
+            <p class="article-text">{{ post.text }}</p>
         </div>
-        {% endfor %}
+        <a href="{% url 'archive' %}" class="back-link">Все записи</a>
     </div>
 </body>
 </html>
